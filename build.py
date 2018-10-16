@@ -53,5 +53,8 @@ if args.git:
     new_tag_cmd = ["git", "tag", release_tag]
     subprocess.Popen(new_tag_cmd).communicate()
 
-    push_cmd = ["git", "push", "--follow-tags"]
+    push_cmd = ["git", "push"]
+    subprocess.Popen(push_cmd).communicate()
+
+    push_tag_cmd = ["git", "push", "origin", release_tag]
     subprocess.Popen(push_cmd).communicate()
