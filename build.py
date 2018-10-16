@@ -57,4 +57,4 @@ if args.git:
     subprocess.Popen(push_cmd).communicate()
 
     push_tag_cmd = ["git", "push", "origin", release_tag]
-    subprocess.Popen(push_cmd).communicate()
+    subprocess.Popen(push_tag_cmd).communicate()
