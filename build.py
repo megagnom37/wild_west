@@ -50,7 +50,7 @@ if args.git:
     commit_cmd = ["git", "commit", "-m", "auto_build"]
     subprocess.Popen(commit_cmd).communicate()
 
-    push_cmd = ["git", "push", "--follow-tags", "auto_build"]
+    push_cmd = ["git", "push", "--follow-tags"]
     subprocess.Popen(push_cmd).communicate()
 
 
