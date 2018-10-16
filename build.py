@@ -55,6 +55,3 @@ if args.git:
 
     push_cmd = ["git", "push", "--follow-tags"]
     subprocess.Popen(push_cmd).communicate()
-
-
-
