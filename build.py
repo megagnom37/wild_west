@@ -1,4 +1,5 @@
 import re
+import os
 import sys
 import argparse
 import subprocess
@@ -14,8 +15,18 @@ unity_path = r"C:\Program Files\Unity\Editor\Unity.exe"
 if args.unity:
     unity_path = args.unity
 
-build_cmd = [unity_path, "-quit", "-batchmode", "-executeMethod", "ProjectBuilder.PerformBuild"]
+if os.path.exists(r".\Wild West\WildWest.apk"):
+    os.remove(r".\Wild West\WildWest.apk")
+
+print("Building start...")
+build_cmd = [unity_path, "-quit", "-batchmode", "-logfile", r".\buildlog.tmp", "-executeMethod", "ProjectBuilder.PerformBuild"]
 build_proc = subprocess.Popen(build_cmd).communicate()
+
+if os.path.exists(r".\Wild West\WildWest.apk"):
+    print("Build completed successfully!")
+else:
+    print("Build failed!")
+    exit(-1)
 
 if args.git:
     tag_cmd = ["git", "tag"]
@@ -43,18 +54,24 @@ if args.git:
     with open(r'./Wild West/ProjectSettings/ProjectSettings.asset', 'w') as f:
         settings = re.sub(r'bundleVersion: \d\d\.\d\d\d', 'bundleVersion: {}.{}'.format(new_version, new_build), settings)
         f.write(settings)
-    
+    print("Version file updated!")
+
     add_cmd = ["git", "add", "."]
     subprocess.Popen(add_cmd).communicate()
+    print("GIT: Files added!")
 
     commit_cmd = ["git", "commit", "-m", "auto_build"]
     subprocess.Popen(commit_cmd).communicate()
+    print("GIT: Files commited!")
 
     new_tag_cmd = ["git", "tag", release_tag]
     subprocess.Popen(new_tag_cmd).communicate()
+    print("GIT: Tag created!")
 
     push_cmd = ["git", "push"]
     subprocess.Popen(push_cmd).communicate()
+    print("GIT: Commit pushed!")
 
     push_tag_cmd = ["git", "push", "origin", release_tag]
     subprocess.Popen(push_tag_cmd).communicate()
+    print("GIT: Tag pushed!")
