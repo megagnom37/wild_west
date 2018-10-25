@@ -11,23 +11,6 @@ parser.add_argument('--new_version',  action='store_true', dest='new_version',  
 
 args = parser.parse_args()
 
-unity_path = r"C:\Program Files\Unity\Editor\Unity.exe"
-if args.unity:
-    unity_path = args.unity
-
-if os.path.exists(r".\Wild West\WildWest.apk"):
-    os.remove(r".\Wild West\WildWest.apk")
-
-print("Building start...")
-build_cmd = [unity_path, "-quit", "-batchmode", "-logfile", r".\buildlog.tmp", "-executeMethod", "ProjectBuilder.PerformBuild"]
-build_proc = subprocess.Popen(build_cmd).communicate()
-
-if os.path.exists(r".\Wild West\WildWest.apk"):
-    print("Build completed successfully!")
-else:
-    print("Build failed!")
-    exit(-1)
-
 if args.git:
     tag_cmd = ["git", "tag"]
     tag_proc = subprocess.Popen(tag_cmd, stdout=subprocess.PIPE)
@@ -56,6 +39,28 @@ if args.git:
         f.write(settings)
     print("Version file updated!")
 
+unity_path = r"C:\Program Files\Unity\Editor\Unity.exe"
+if args.unity:
+    unity_path = args.unity
+
+if os.path.exists(r".\Wild West\WildWest.apk"):
+    os.remove(r".\Wild West\WildWest.apk")
+
+print("Building start...")
+build_cmd = [unity_path, "-quit", "-batchmode", "-logfile", r".\buildlog.tmp", "-executeMethod", "ProjectBuilder.PerformBuild"]
+build_proc = subprocess.Popen(build_cmd).communicate()
+
+if os.path.exists(r".\Wild West\WildWest.apk"):
+    print("Build completed successfully!")
+else:
+    print("Build failed!")
+    if args.git:
+        with open(r'./Wild West/ProjectSettings/ProjectSettings.asset', 'w') as f:
+            settings = re.sub(r'bundleVersion: \d\d\.\d\d\d', 'bundleVersion: {}.{}'.format(last_version, last_build), settings)
+            f.write(settings)
+    exit(-1)
+
+if args.git:
     add_cmd = ["git", "add", "."]
     subprocess.Popen(add_cmd).communicate()
     print("GIT: Files added!")
