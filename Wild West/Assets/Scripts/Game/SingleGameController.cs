@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class SingleGameController : MonoBehaviour {
     [SerializeField] private CharacterObject player;
-    [SerializeField] private EnemyBot enemy;
+    private EnemyBot enemy;
+    private EnemyBotManager _enemyBotManager;
+    GameObject enemyObj;
     private float _startGameTime = 0.0f;
 
     void Start () {
         //TODO: Tap for start the game
+        _enemyBotManager = GameObject.Find("EnemyBotManager").GetComponent<EnemyBotManager>();
+        enemyObj = Instantiate(_enemyBotManager.getCurrentEnemyBotProperties().botModel, new Vector3(6, 1, 1), transform.rotation) as GameObject;
+        enemyObj.transform.localScale = new Vector3(1, 1, 1);
+        enemyObj.AddComponent<EnemyBot>();
+        enemy = enemyObj.GetComponent<EnemyBot>();
+        enemy.setProperties(_enemyBotManager.getCurrentEnemyBotProperties());
+
         float timeForStartGame = 5.0f + Random.Range(-2.0f, 2.0f);
         print(timeForStartGame);
         StartCoroutine(StartGameAfterSeconds(timeForStartGame));

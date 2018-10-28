@@ -233,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &480945379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +245,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 946928e1ac20d8946bbf32a227475650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _averageShootTime: 0.3
 --- !u!136 &480945380
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -619,7 +618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 800586898}
-  enemy: {fileID: 480945379}
 --- !u!4 &1308200873
 Transform:
   m_ObjectHideFlags: 0
