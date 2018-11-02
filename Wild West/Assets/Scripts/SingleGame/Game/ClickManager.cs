@@ -7,19 +7,19 @@ public class ClickManager : MonoBehaviour {
     public static event ClickAction OnClicked;
 
     private float _clickTime = 0.0f;
-
-    public float ClickTime
-    {
-        get { return _clickTime; }
-    }
-
+		
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && (OnClicked != null))
         {
             _clickTime = Time.time;
             OnClicked();
-            print("OnClick" + _clickTime.ToString());
+            print("OnClick: " + _clickTime.ToString());
         }
     }
+
+	public float ClickTime
+	{
+		get { return _clickTime; }
+	}
 }

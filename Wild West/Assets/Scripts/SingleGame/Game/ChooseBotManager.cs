@@ -31,18 +31,15 @@ public class ChooseBotManager : MonoBehaviour {
 
     private void UpdateEnemyBotProperties()
     {
-        EnemyBotProperties currentEnemyBot = _enemyBotManager.getCurrentEnemyBotProperties();
+        EnemyBotProperties currentEnemyBot = _enemyBotManager.CurrentEnemyBotProperties;
 
         if (currentBotObject)
             Destroy(currentBotObject);
 
         currentBotObject = Instantiate(currentEnemyBot.botModel, new Vector3(0, 0, 0), transform.rotation) as GameObject;
 
-        //_botSpawn.SetActive(false);
         currentBotObject.transform.SetParent(_botSpawn.transform);
         currentBotObject.transform.localPosition = new Vector3(0, 0, 0);
-        //_botSpawn = currentEnemyBot.botModel;
-        //_botSpawn.SetActive(true);
 
         _textDescription.text = currentEnemyBot.description.text;
         _textProperties.text = "Average time: " + currentEnemyBot.averageTime.ToString();

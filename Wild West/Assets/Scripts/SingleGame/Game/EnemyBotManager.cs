@@ -27,16 +27,8 @@ public class EnemyBotManager : MonoBehaviour {
         }
     }
 
-	public EnemyBotProperties getCurrentEnemyBotProperties()
+	public EnemyBotProperties CurrentEnemyBotProperties
     {
-        return _botProperties[_currentID];
+		get { return _botProperties [_currentID]; }
     }
-
-    //public GameObject getEnemyBotObject()
-    //{
-    //    GameObject enemyBotObj = new GameObject();
-    //    enemyBotObj.AddComponent<EnemyBot>();
-    //    enemyBotObj.GetComponent<EnemyBot>().setProperties(getCurrentEnemyBotProperties());
-    //    return enemyBotObj;
-    //}
 }

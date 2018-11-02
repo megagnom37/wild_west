@@ -7,14 +7,11 @@ public class CharacterObject : MonoBehaviour {
 
     [SerializeField] private ClickManager _clickManager;
 
-    void GetClickTime()
+    public void ClickToShot()
     {
-        _characterShootTime = _clickManager.ClickTime;
-    }
-
-    void Start()
-    {
-        ClickManager.OnClicked += GetClickTime;
+		_characterShootTime = _clickManager.ClickTime;
+		ClickManager.OnClicked -= this.ClickToShot;
+		print("CharacterShootTime: " + _characterShootTime.ToString());
     }
 
     public float ShootTime
