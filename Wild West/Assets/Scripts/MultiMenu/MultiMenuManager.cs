@@ -9,4 +9,9 @@ public class MultiMenuManager : MonoBehaviour {
     {
         SceneManager.LoadScene("main_menu");
     }
+
+    public void OnStartClick()
+    {
+        SceneManager.LoadScene("multi_player_game");
+    }
 }
