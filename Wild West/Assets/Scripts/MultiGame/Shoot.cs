@@ -18,7 +18,17 @@ public class Shoot : NetworkBehaviour {
 		}
 	}
 
-	public void startProc()
+    public void Start()
+    {
+        if (isLocalPlayer)
+        {
+            Player player = GameController.GetPlayer(transform.name);
+            player.isPlayer = true;
+        }
+            
+    }
+
+    public void startProc()
 	{
 		StartCoroutine (SleepToStart());
 	}
@@ -61,8 +71,6 @@ public class Shoot : NetworkBehaviour {
 	{
 		tapToShot = Time.time;
 		print ("tapToShot: " + tapToShot.ToString ());
-		Player player = GameController.GetPlayer (transform.name);
-		player.isPlayer = true;
 		if (startTime != 0.0f)
 			CmdWasShoot (transform.name, tapToShot - startTime);
 		else

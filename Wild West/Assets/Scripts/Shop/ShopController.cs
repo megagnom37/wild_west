@@ -13,7 +13,7 @@ public class ShopController : MonoBehaviour {
 
 	void Awake()
 	{
-		money = PlayerPrefs.GetInt ("money", 0);
+        money = PlayerPrefs.GetInt ("money", 0);
 		currentIndex = PlayerPrefs.GetInt ("currentCharacter", 0);
 	}
 
