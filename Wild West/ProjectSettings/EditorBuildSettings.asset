@@ -7,10 +7,7 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/main_menu.unity
-    guid: 3e5469af46c7b66418a6977909fe69c6
-  - enabled: 1
-    path: Assets/Scenes/single_player_menu.unity
-    guid: 4c70b3f4d4559e149b4f1140a76a32f5
+    guid: 4995de208bb075b4cb0eb3befe3c4ca1
   - enabled: 1
     path: Assets/Scenes/multi_player_menu.unity
     guid: 09367d7a8b782164d93636f143b62b7d
@@ -23,3 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/multi_player_game.unity
     guid: 8e1b0862aa27d4a40ad1ddd34b4727a6
+  - enabled: 1
+    path: Assets/Scenes/single_player_menu.unity
+    guid: 65513eee5d8f4d349945d0b4b4d2d438
+  - enabled: 1
+    path: Assets/Scenes/shop.unity
+    guid: 25c8be2dc0ae7f843ace84c8ba914377
+  m_configObjects: {}

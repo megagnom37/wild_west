@@ -13,6 +13,8 @@ public class ShopController : MonoBehaviour {
 
 	void Awake()
 	{
+        PlayerPrefs.SetInt("Character_Blue" + "_b", 1);
+        PlayerPrefs.SetInt("money", 70);
         money = PlayerPrefs.GetInt ("money", 0);
 		currentIndex = PlayerPrefs.GetInt ("currentCharacter", 0);
 	}
@@ -33,7 +35,6 @@ public class ShopController : MonoBehaviour {
 		}
 		else
 			return false;
-
 	}
 
 	public GameObject GetCurrentCharacter()
@@ -60,7 +61,7 @@ public class ShopController : MonoBehaviour {
 
 	public bool IsCurrentBought()
 	{
-		int isBought = PlayerPrefs.GetInt (characters [currentIndex].name + "_b", 0);
+		int isBought = PlayerPrefs.GetInt(characters [currentIndex].name + "_b", 0);
 		return (isBought != 0);
 	}
 
