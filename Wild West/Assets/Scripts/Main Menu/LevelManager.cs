@@ -24,4 +24,9 @@ public class LevelManager : MonoBehaviour {
     {
         Application.Quit();
     }
+
+	public void OnShopClick()
+	{
+		SceneManager.LoadScene("shop");
+	}
 }

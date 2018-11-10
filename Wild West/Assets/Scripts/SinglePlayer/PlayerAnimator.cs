@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class PlayerAnimator : MonoBehaviour {
 
-    Animator _animator;
+    Animator animator;
     public GameObject leg;
     public GameObject hand;
     public GameObject gun;
 
     // Use this for initialization
     void Start () {
-        _animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         gun.transform.parent = leg.transform;
     }
 	
