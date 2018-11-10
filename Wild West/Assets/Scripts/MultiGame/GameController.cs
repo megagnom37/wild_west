@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-
-	public static Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
+    public static Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
 
 	static private float playerTime = -9999f;
 	static private float enemyTime = -9999f;
@@ -13,8 +12,8 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
-		timeToStart = Random.Range (10, 10);
-		print (timeToStart);
+        timeToStart = 4.0f + Random.Range(-1.5f, 1.5f);
+        print (timeToStart);
 	}
 
 	public static void AddPlayer(string id, GameObject player)
@@ -23,11 +22,10 @@ public class GameController : MonoBehaviour {
 		player.transform.name = "Player " + id;
 	}
 
-	public static Player GetPlayer(string id)
-	{
-		return players [id].GetComponent<Player>();
-	}
-
+    public static Player GetPlayer(string id)
+    {
+        return players[id].GetComponent<Player>();
+    }
 
 	public static float GetStartTime()
 	{
@@ -49,18 +47,18 @@ public class GameController : MonoBehaviour {
 
         if (playerTime < 0 && enemyTime < 0)
         {
-            p1.resultMatch = "tie";
-            p2.resultMatch = "tie";
+            p1.resultMatch = "TIE";
+            p2.resultMatch = "TIE";
         }
         else if ((playerTime < 0) || ((playerTime > enemyTime) && (enemyTime > 0)))
         {
-            p1.resultMatch = "Lose";
-            p2.resultMatch = "Win";
+            p1.resultMatch = "LOSE";
+            p2.resultMatch = "WIN";
         }
         else
         {
-            p1.resultMatch = "Win";
-            p2.resultMatch = "Lose";
+            p1.resultMatch = "WIN";
+            p2.resultMatch = "LOSE";
         }
 
 		p1.isResultReady = true;

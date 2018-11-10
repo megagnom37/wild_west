@@ -9,50 +9,77 @@ public class Player : NetworkBehaviour
 	[SyncVar] private float resultTime = 0.0f;
 	[SyncVar] public bool isResultReady = false;
 	[SyncVar] public string resultMatch;
+    [SyncVar] public bool isShotWas = false;
+
+    public GameObject modelObject;
 	public bool isPlayer = false;
 
 	private GameObject resultPanel;
-	private Text resultText;
+    private Text _infoText;
 
-	void Start()
+    void Start()
 	{
-		if (isLocalPlayer) {
+        if (isLocalPlayer)
+        {
             isPlayer = true;
 
-            resultText = GameObject.Find("Text").GetComponent<Text>();
-            if (isServer)
-                resultText.text = "Wait opponent!";
-            else
-                resultText.text = "Ready...";
+            modelObject = GameObject.Find("CharacterPlayer");
 
-            resultPanel = GameObject.Find ("Panel");
-			//resultPanel.SetActive (false);
-		}
+            _infoText = GameObject.Find("t_info").GetComponent<Text>();
+            if (isServer)
+                _infoText.text = "WAIT OPPONENT";
+            else
+                _infoText.text = "READY";
+
+            resultPanel = GameObject.Find("p_result");
+            resultPanel.SetActive(false);
+        }
+        else
+        {
+            modelObject = GameObject.Find("Enemy");
+        }
 	}
+
+    private void Update()
+    {
+        if (isShotWas)
+        {
+            modelObject.GetComponent<PlayerAnimator>().Shoot();
+            isShotWas = false;
+        }
+    }
 
     public void ShowReady()
     {
         if (isPlayer)
-            resultText.text = "Ready...";
+            _infoText.text = "READY";
     }
 
     public void ShowFire()
     {
         if (isPlayer)
-            resultText.text = "FIRE!!!";
+            _infoText.text = "FIRE";
     }
 
 	public void ShowResults()
 	{
-		if (isResultReady && isPlayer) {
-			resultText.text = resultMatch;
-			resultPanel.SetActive (true);
-		}
+        if (resultMatch == "LOSE")
+            modelObject.GetComponent<PlayerAnimator>().Dead();
+        if (isResultReady && isPlayer)
+        {
+            resultPanel.GetComponent<ResultPanelController>().SetResult(resultMatch, resultTime);
+            resultPanel.SetActive(true);
+        }
 	}
 
 	public void SetResult(float time)
 	{
-		resultTime = time;
+        resultTime = time;
 		GameController.SetPlayerTime (name, resultTime);
 	}
+
+    public void ShotAnime()
+    {
+        print("ShotAnime");
+    }
 }

@@ -44,7 +44,7 @@ public class SingleGameController : MonoBehaviour {
 
 	void clickToStart()
 	{
-		float timeForStartGame = 7.0f + Random.Range(-1.5f, 1.5f);
+		float timeForStartGame = 4.0f + Random.Range(-1.5f, 1.5f);
 		ClickManager.OnClicked += _player.ClickToShot;
 		StartCoroutine(StartGameAfterSeconds(timeForStartGame));
 	}

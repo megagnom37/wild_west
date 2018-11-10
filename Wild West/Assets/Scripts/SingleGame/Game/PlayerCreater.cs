@@ -11,6 +11,7 @@ public class PlayerCreater : MonoBehaviour {
     {
         int currentCharacterIdx = PlayerPrefs.GetInt("currentCharacter", 0);
         currentCharacter = Instantiate(characters[currentCharacterIdx], playerSpawn.transform);
+        currentCharacter.name = "CharacterPlayer";
     }
 
     public GameObject GetCurrentPlayer()
