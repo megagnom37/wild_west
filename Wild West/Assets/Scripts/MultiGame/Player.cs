@@ -17,16 +17,34 @@ public class Player : NetworkBehaviour
 	void Start()
 	{
 		if (isLocalPlayer) {
-			resultPanel = GameObject.Find ("Panel");
-			resultText = GameObject.Find ("Text").GetComponent<Text>();
-			resultPanel.SetActive (false);
+            isPlayer = true;
+
+            resultText = GameObject.Find("Text").GetComponent<Text>();
+            if (isServer)
+                resultText.text = "Wait opponent!";
+            else
+                resultText.text = "Ready...";
+
+            resultPanel = GameObject.Find ("Panel");
+			//resultPanel.SetActive (false);
 		}
 	}
+
+    public void ShowReady()
+    {
+        if (isPlayer)
+            resultText.text = "Ready...";
+    }
+
+    public void ShowFire()
+    {
+        if (isPlayer)
+            resultText.text = "FIRE!!!";
+    }
 
 	public void ShowResults()
 	{
 		if (isResultReady && isPlayer) {
-			transform.name = "Winner: " + resultTime.ToString();
 			resultText.text = resultMatch;
 			resultPanel.SetActive (true);
 		}

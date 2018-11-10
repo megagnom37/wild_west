@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ResultPanelManager : MonoBehaviour {
-//	[SerializeField] GameObject _resultPanel;
 	[SerializeField] Text _resultMatch;
 	[SerializeField] Text _resultTime;
 

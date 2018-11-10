@@ -43,35 +43,51 @@ public class GameController : MonoBehaviour {
 			enemyTime = time;
 	}
 
-	static public void ProcResults(){
-		Player p1 = players ["Player 1"].GetComponent<Player> ();
-		Player p2 = players ["Player 2"].GetComponent<Player> ();
+    static public void ProcResults() {
+        Player p1 = players["Player 1"].GetComponent<Player>();
+        Player p2 = players["Player 2"].GetComponent<Player>();
 
-		if (playerTime == -9999f && enemyTime == -9999f) {
-			p1.resultMatch = "tie";
-			p2.resultMatch = "tie";
-		} else if (playerTime == -9999f) {
-			p1.resultMatch = "Lose";
-			p2.resultMatch = "Win";
-		} else if (enemyTime == -9999f) {
-			p1.resultMatch = "Win";
-			p2.resultMatch = "Lose";
-		} else if (playerTime < 0 && enemyTime < 0) {
-			p1.resultMatch = "tie";
-			p2.resultMatch = "tie";
-		} else if (playerTime < 0) {
-			p1.resultMatch = "Lose";
-			p2.resultMatch = "Win";
-		} else if (enemyTime < 0) {
-			p1.resultMatch = "Win";
-			p2.resultMatch = "Lose";
-		} else if (playerTime > enemyTime) {
-			p1.resultMatch = "Lose";
-			p2.resultMatch = "Win";
-		} else {
-			p1.resultMatch = "Win";
-			p2.resultMatch = "Lose";
-		}
+        if (playerTime < 0 && enemyTime < 0)
+        {
+            p1.resultMatch = "tie";
+            p2.resultMatch = "tie";
+        }
+        else if ((playerTime < 0) || (playerTime > enemyTime))
+        {
+            p1.resultMatch = "Lose";
+            p2.resultMatch = "Win";
+        }
+        else
+        {
+            p1.resultMatch = "Win";
+            p2.resultMatch = "Lose";
+        }
+
+  //      if (playerTime == -9999f && enemyTime == -9999f) {
+		//	p1.resultMatch = "tie";
+		//	p2.resultMatch = "tie";
+		//} else if (playerTime == -9999f) {
+		//	p1.resultMatch = "Lose";
+		//	p2.resultMatch = "Win";
+		//} else if (enemyTime == -9999f) {
+		//	p1.resultMatch = "Win";
+		//	p2.resultMatch = "Lose";
+		//} else if (playerTime < 0 && enemyTime < 0) {
+		//	p1.resultMatch = "tie";
+		//	p2.resultMatch = "tie";
+		//} else if (playerTime < 0) {
+		//	p1.resultMatch = "Lose";
+		//	p2.resultMatch = "Win";
+		//} else if (enemyTime < 0) {
+		//	p1.resultMatch = "Win";
+		//	p2.resultMatch = "Lose";
+		//} else if (playerTime > enemyTime) {
+		//	p1.resultMatch = "Lose";
+		//	p2.resultMatch = "Win";
+		//} else {
+		//	p1.resultMatch = "Win";
+		//	p2.resultMatch = "Lose";
+		//}
 
 		p1.isResultReady = true;
 		p2.isResultReady = true;

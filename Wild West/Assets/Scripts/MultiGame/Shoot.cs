@@ -12,32 +12,22 @@ public class Shoot : NetworkBehaviour {
 
 	public void SetStartShotTime(float time)
 	{
-		if (isServer) {
-			startShotTime = time;
-			print ("SetStartShotTime.isServer");
-		}
+		startShotTime = time;
+		print ("SetStartShotTime.isServer");
 	}
-
-    public void Start()
-    {
-        if (isLocalPlayer)
-        {
-            Player player = GameController.GetPlayer(transform.name);
-            player.isPlayer = true;
-        }
-            
-    }
 
     public void startProc()
 	{
-		StartCoroutine (SleepToStart());
+        GameController.GetPlayer(name).ShowReady();
+        StartCoroutine (SleepToStart());
 	}
 
 	IEnumerator SleepToStart()
 	{
 		print ("startShotTime: " + startShotTime.ToString ());
 		yield return new WaitForSeconds (startShotTime);
-		startTime = Time.time;
+        GameController.GetPlayer(name).ShowFire();
+        startTime = Time.time;
 		print ("startTime: " + startTime.ToString ());
 		StartCoroutine (Sleep5Sec());
 	}
