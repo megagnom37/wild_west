@@ -815,15 +815,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _botProperties:
   - botModel: {fileID: 1418332430066794, guid: 0aa279d94505cc84684241ae5ed722e2, type: 2}
-    averageTime: 2
+    averageTime: 1
     name: Bad Alex
     description: Rob children and old women. But will be able to shoot novice cowboy.
   - botModel: {fileID: 1992916345183094, guid: 810d30085a7f2f04cb97e44dc8e0879b, type: 2}
-    averageTime: 1
+    averageTime: 0.5
     name: Sheriff Ivan
     description: Young sheriff. Every cowboy wants to shoot this bastard.
   - botModel: {fileID: 1802893067927938, guid: 78c1c25290ada6b48a7fca9cb273eb4b, type: 2}
-    averageTime: 0.5
+    averageTime: 0.3
     name: 'Crazy Max '
     description: The most terrible and fastest cowboy in Dicop West.
 --- !u!4 &106082862

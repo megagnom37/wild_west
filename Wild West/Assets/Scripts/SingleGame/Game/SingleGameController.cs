@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SingleGameController : MonoBehaviour {
-    [SerializeField] private CharacterObject _player;
+    /*[SerializeField] */private CharacterObject _player;
+    [SerializeField] private PlayerCreater playerCreater;
+    [SerializeField] private ClickManager _clickManager;
 
-	private EnemyBotManager _enemyBotManager;
+    private EnemyBotManager _enemyBotManager;
 	[SerializeField] private GameObject _enemySpawn;
     private EnemyBot _enemy;
 
@@ -15,12 +17,19 @@ public class SingleGameController : MonoBehaviour {
 
     void Start () {
         _enemyBotManager = GameObject.Find("EnemyBotManager").GetComponent<EnemyBotManager>();
+        InitPlayer();
+        InitEnemy();
         clickToStart();
-
-        InitEnemy ();
     }
 
-	void InitEnemy()
+    void InitPlayer()
+    {
+        GameObject obj = playerCreater.GetCurrentPlayer();
+        _player = obj.AddComponent<CharacterObject>();
+        _player._clickManager = _clickManager;
+    }
+
+    void InitEnemy()
 	{
 		GameObject enemyObj;
 		enemyObj = Instantiate(_enemyBotManager.CurrentEnemyBotProperties.botModel, 
