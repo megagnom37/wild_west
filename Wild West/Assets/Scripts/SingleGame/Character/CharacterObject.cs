@@ -11,7 +11,13 @@ public class CharacterObject : MonoBehaviour {
     {
 		_characterShootTime = _clickManager.ClickTime;
 		ClickManager.OnClicked -= this.ClickToShot;
+        GetComponent<PlayerAnimator>().Shoot();
 		print("CharacterShootTime: " + _characterShootTime.ToString());
+    }
+
+    public void Dead()
+    {
+        GetComponent<PlayerAnimator>().Dead();
     }
 
     public float ShootTime

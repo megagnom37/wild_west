@@ -823,9 +823,9 @@ MonoBehaviour:
     name: Sheriff Ivan
     description: Young sheriff. Every cowboy wants to shoot this bastard.
   - botModel: {fileID: 1802893067927938, guid: 78c1c25290ada6b48a7fca9cb273eb4b, type: 2}
-    averageTime: 0.3
+    averageTime: 0.25
     name: 'Crazy Max '
-    description: The most terrible and fastest cowboy in Dicop West.
+    description: The most terrible and fastest cowboy in Wild West.
 --- !u!4 &106082862
 Transform:
   m_ObjectHideFlags: 0
@@ -1024,7 +1024,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07874979, y: 0.82023734}
   m_AnchorMax: {x: 0.9212512, y: 1}
-  m_AnchoredPosition: {x: -0.000030517578, y: 0.8499756}
+  m_AnchoredPosition: {x: 0, y: 0.8499756}
   m_SizeDelta: {x: 1.3999939, y: -1.7000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &183663074

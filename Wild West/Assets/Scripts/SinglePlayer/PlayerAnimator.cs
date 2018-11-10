@@ -19,4 +19,15 @@ public class PlayerAnimator : MonoBehaviour {
     {
         gun.transform.parent = hand.transform;
     }
+
+    public void Shoot()
+    {
+        animator.SetTrigger("shoot");
+    }
+
+    public void Dead()
+    {
+        animator.SetTrigger("dead");
+    }
+
 }

@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SingleGameController : MonoBehaviour {
-    /*[SerializeField] */private CharacterObject _player;
+    private CharacterObject _player;
     [SerializeField] private PlayerCreater playerCreater;
     [SerializeField] private ClickManager _clickManager;
 
@@ -12,6 +13,7 @@ public class SingleGameController : MonoBehaviour {
     private EnemyBot _enemy;
 
 	[SerializeField] private GameObject _resultPanel;
+    [SerializeField] private Text _infoText;
 
     private float _startGameTime = 0.0f;
 
@@ -42,18 +44,18 @@ public class SingleGameController : MonoBehaviour {
 
 	void clickToStart()
 	{
-		float timeForStartGame = 5.0f + Random.Range(-2.0f, 2.0f);
-		print("Time to start: " + timeForStartGame.ToString());
+		float timeForStartGame = 7.0f + Random.Range(-1.5f, 1.5f);
 		ClickManager.OnClicked += _player.ClickToShot;
 		StartCoroutine(StartGameAfterSeconds(timeForStartGame));
 	}
 
     IEnumerator StartGameAfterSeconds(float timeInSec)
     {
-        print("Ready");
+        _infoText.text = "READY";
         yield return new WaitForSeconds(timeInSec);
         _startGameTime = Time.time;
-        print("Go");
+        _infoText.text = "FIREEEE";
+        _enemy.Shoot();
 
         StartCoroutine(ResultGameAfterSeconds(3.0f));
     }
@@ -61,19 +63,21 @@ public class SingleGameController : MonoBehaviour {
     IEnumerator ResultGameAfterSeconds(float timeInSec)
     {
         yield return new WaitForSeconds(timeInSec);
-        
-		float resultTime = _player.ShootTime - _startGameTime;
+
+        _infoText.enabled = false;
+
+        float resultTime = _player.ShootTime - _startGameTime;
         print(resultTime);
         print(_enemy.getShootTime());
 		_resultPanel.SetActive (true);
         if ((resultTime > 0.0f) && (resultTime < _enemy.getShootTime()))
         {
-            print("Win!");
+            _enemy.Dead();
 			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("WIN", resultTime);
         }
         else
         {
-            print("Lose!");
+            _player.Dead();
 			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("LOSE", resultTime);
         }
     }
