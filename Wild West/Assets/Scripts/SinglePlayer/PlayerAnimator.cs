@@ -18,6 +18,8 @@ public class PlayerAnimator : MonoBehaviour {
 	public void SetHandAsParent()
     {
         gun.transform.parent = hand.transform;
+        gun.transform.localPosition = new Vector3(0.106f, 0.028f, -0.0323f);
+        gun.transform.localEulerAngles = new Vector3(187.524f, 274.212f, -283.617f);
     }
 
     public void Shoot()

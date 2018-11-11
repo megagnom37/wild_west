@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class ResultPanelController : MonoBehaviour
 {
@@ -17,6 +18,15 @@ public class ResultPanelController : MonoBehaviour
 
     public void OnMainMenuClick()
     {
+        //NetworkServer.Reset();
+        //NetworkManager.singleton.StopHost();
+        //NetworkManager.singleton.
+        ////NetworkManager.singleton.StopClient();
+        ////NetworkManager.singleton.StopServer();
+
+        NetworkManager.Shutdown();
+        Destroy(GameObject.Find("NetworkManager"));
+
         SceneManager.LoadScene("main_menu");
     }
 }

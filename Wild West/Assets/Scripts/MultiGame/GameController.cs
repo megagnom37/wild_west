@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour {
 
 	public static void AddPlayer(string id, GameObject player)
 	{
-		players.Add ("Player " + id, player);
+        players["Player " + id] = player;
 		player.transform.name = "Player " + id;
 	}
 

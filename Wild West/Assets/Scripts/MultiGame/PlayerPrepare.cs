@@ -7,12 +7,13 @@ public class PlayerPrepare : NetworkBehaviour {
 	public override void OnStartClient(){
 		base.OnStartClient ();
 
-		string id = GetComponent<NetworkIdentity> ().netId.ToString ();
+		string id = (2 - (GetComponent<NetworkIdentity> ().netId.Value % 2)).ToString ();
 		GameController.AddPlayer (id, this.gameObject);
-		print ("OnStartClient: " + NetworkServer.connections.Count);
+		//print ("OnStartClient: " + NetworkServer.connections.Count);
 
 		if (isServer) {
-			GetComponent<Shoot> ().SetStartShotTime (GameController.GetStartTime ());
+            print("GameController.players.Count: " + GameController.players.Count);
+            GetComponent<Shoot> ().SetStartShotTime (GameController.GetStartTime ());
 			if (NetworkServer.connections.Count == 2) {
 				foreach (GameObject obj in GameController.players.Values)
 					obj.GetComponent<Shoot> ().startProc ();
