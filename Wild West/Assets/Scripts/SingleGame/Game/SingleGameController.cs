@@ -1,32 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SingleGameController : MonoBehaviour {
-    [SerializeField] private CharacterObject _player;
+    private CharacterObject _player;
+    [SerializeField] private PlayerCreater playerCreater;
+    [SerializeField] private ClickManager _clickManager;
 
-	private EnemyBotManager _enemyBotManager;
+    private EnemyBotManager _enemyBotManager;
 	[SerializeField] private GameObject _enemySpawn;
     private EnemyBot _enemy;
 
 	[SerializeField] private GameObject _resultPanel;
+    [SerializeField] private Text _infoText;
 
     private float _startGameTime = 0.0f;
 
     void Start () {
-		_enemyBotManager = GameObject.Find("EnemyBotManager").GetComponent<EnemyBotManager>();
-		StartCoroutine(LoadScene());
-		InitEnemy ();
+        _enemyBotManager = GameObject.Find("EnemyBotManager").GetComponent<EnemyBotManager>();
+        InitPlayer();
+        InitEnemy();
+        clickToStart();
     }
 
-	IEnumerator LoadScene()
-	{
-		yield return new WaitForSeconds(2);
-		print ("Tap to start");
-		ClickManager.OnClicked += clickToStart;
-	}
+    void InitPlayer()
+    {
+        GameObject obj = playerCreater.GetCurrentPlayer();
+        _player = obj.AddComponent<CharacterObject>();
+        _player._clickManager = _clickManager;
+    }
 
-	void InitEnemy()
+    void InitEnemy()
 	{
 		GameObject enemyObj;
 		enemyObj = Instantiate(_enemyBotManager.CurrentEnemyBotProperties.botModel, 
@@ -39,42 +44,41 @@ public class SingleGameController : MonoBehaviour {
 
 	void clickToStart()
 	{
-		float timeForStartGame = 5.0f + Random.Range(-2.0f, 2.0f);
-		print("Time to start: " + timeForStartGame.ToString());
-		ClickManager.OnClicked -= clickToStart;
+		float timeForStartGame = 4.0f + Random.Range(-1.5f, 1.5f);
 		ClickManager.OnClicked += _player.ClickToShot;
 		StartCoroutine(StartGameAfterSeconds(timeForStartGame));
 	}
 
     IEnumerator StartGameAfterSeconds(float timeInSec)
     {
-        print("Ready");
+        _infoText.text = "READY";
         yield return new WaitForSeconds(timeInSec);
         _startGameTime = Time.time;
-        print("Go");
+        _infoText.text = "FIREEEE";
+        _enemy.Shoot();
 
-        StartCoroutine(ResultGameAfterSeconds(3.0f));
+        StartCoroutine(ResultGameAfterSeconds(2f));
     }
 
     IEnumerator ResultGameAfterSeconds(float timeInSec)
     {
         yield return new WaitForSeconds(timeInSec);
-        
-		float resultTime = _player.ShootTime - _startGameTime;
+
+        _infoText.enabled = false;
+
+        float resultTime = _player.ShootTime - _startGameTime;
         print(resultTime);
         print(_enemy.getShootTime());
 		_resultPanel.SetActive (true);
         if ((resultTime > 0.0f) && (resultTime < _enemy.getShootTime()))
         {
-            print("Win!");
+            _enemy.Dead();
 			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("WIN", resultTime);
-            _enemy.gameObject.transform.Rotate(new Vector3(90, 0, 0));
         }
         else
         {
-            print("Lose!");
+            _player.Dead();
 			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("LOSE", resultTime);
-            _player.gameObject.transform.Rotate(new Vector3(90, 0, 0));
         }
     }
 }

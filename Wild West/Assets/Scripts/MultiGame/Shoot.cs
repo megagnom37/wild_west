@@ -13,7 +13,6 @@ public class Shoot : NetworkBehaviour {
 	public void SetStartShotTime(float time)
 	{
 		startShotTime = time;
-		print ("SetStartShotTime.isServer");
 	}
 
     public void startProc()
@@ -24,11 +23,9 @@ public class Shoot : NetworkBehaviour {
 
 	IEnumerator SleepToStart()
 	{
-		print ("startShotTime: " + startShotTime.ToString ());
 		yield return new WaitForSeconds (startShotTime);
         GameController.GetPlayer(name).ShowFire();
         startTime = Time.time;
-		print ("startTime: " + startTime.ToString ());
 		StartCoroutine (Sleep5Sec());
 	}
 
@@ -71,7 +68,7 @@ public class Shoot : NetworkBehaviour {
 	void CmdWasShoot(string name, float time)
 	{
 		Player player = GameController.GetPlayer (name);
+        player.isShotWas = true;
 		player.SetResult (time);
-		Debug.Log (name + " : " + (time).ToString());
 	}
 }
