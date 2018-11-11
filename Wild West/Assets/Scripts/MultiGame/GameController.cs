@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 
 	void Start()
 	{
-        timeToStart = 4.0f + Random.Range(-1.5f, 1.5f);
+        timeToStart = 4.0f + Random.Range(-2f, 2f);
         print (timeToStart);
 	}
 

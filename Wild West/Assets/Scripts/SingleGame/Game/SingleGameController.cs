@@ -57,7 +57,7 @@ public class SingleGameController : MonoBehaviour {
         _infoText.text = "FIREEEE";
         _enemy.Shoot();
 
-        StartCoroutine(ResultGameAfterSeconds(3.0f));
+        StartCoroutine(ResultGameAfterSeconds(2f));
     }
 
     IEnumerator ResultGameAfterSeconds(float timeInSec)
