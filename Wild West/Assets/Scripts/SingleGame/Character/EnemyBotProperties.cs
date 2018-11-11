@@ -8,5 +8,6 @@ public struct EnemyBotProperties
 {
     public GameObject botModel;
     public float averageTime;
-    public Text description;
+    public string name;
+    public string description;
 }
