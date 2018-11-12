@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Networking;
 
 public class GameController : MonoBehaviour {
     public static Dictionary<string, GameObject> players = new Dictionary<string, GameObject>();
@@ -9,12 +11,21 @@ public class GameController : MonoBehaviour {
 	static private float playerTime = -9999f;
 	static private float enemyTime = -9999f;
 	static private float timeToStart = 0.0f;
+    static public uint disconnectCount = 0;
 
 	void Start()
 	{
         timeToStart = 4.0f + Random.Range(-2f, 2f);
         print (timeToStart);
 	}
+
+    public void OnDisconnectClick()
+    {
+        NetworkManager.Shutdown();
+        Destroy(GameObject.Find("NetworkManager"));
+        disconnectCount++;
+        SceneManager.LoadScene("main_menu");
+    }
 
 	public static void AddPlayer(string id, GameObject player)
 	{
@@ -44,6 +55,13 @@ public class GameController : MonoBehaviour {
     static public void ProcResults() {
         Player p1 = players["Player 1"].GetComponent<Player>();
         Player p2 = players["Player 2"].GetComponent<Player>();
+        
+        if (GameController.disconnectCount % 2 != 0)
+        {
+            Player tmp = p2;
+            p2 = p1;
+            p1 = tmp;
+        }
 
         if (playerTime < 0 && enemyTime < 0)
         {
