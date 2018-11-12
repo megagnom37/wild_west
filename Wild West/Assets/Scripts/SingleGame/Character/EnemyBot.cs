@@ -27,6 +27,11 @@ public class EnemyBot : MonoBehaviour {
         GetComponent<PlayerAnimator>().Dead();
     }
 
+    public int getHeadCost()
+    {
+        return _botProperties.headCost;
+    }
+
     IEnumerator WaitBeforeShoot()
     {
         yield return new WaitForSeconds(shotTime);
