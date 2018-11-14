@@ -74,6 +74,9 @@ public class SingleGameController : MonoBehaviour {
         {
             _enemy.Dead();
 			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("WIN", resultTime);
+            int currentMoney = PlayerPrefs.GetInt("money", 0);
+            currentMoney += _enemy.getHeadCost();
+            PlayerPrefs.SetInt("money", currentMoney);
         }
         else
         {

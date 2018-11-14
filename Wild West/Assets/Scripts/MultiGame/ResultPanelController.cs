@@ -18,14 +18,9 @@ public class ResultPanelController : MonoBehaviour
 
     public void OnMainMenuClick()
     {
-        //NetworkServer.Reset();
-        //NetworkManager.singleton.StopHost();
-        //NetworkManager.singleton.
-        ////NetworkManager.singleton.StopClient();
-        ////NetworkManager.singleton.StopServer();
-
         NetworkManager.Shutdown();
         Destroy(GameObject.Find("NetworkManager"));
+        Destroy(GameObject.Find("NetworkDiscovery"));
 
         SceneManager.LoadScene("main_menu");
     }

@@ -10,4 +10,5 @@ public struct EnemyBotProperties
     public float averageTime;
     public string name;
     public string description;
+    public int headCost;
 }
