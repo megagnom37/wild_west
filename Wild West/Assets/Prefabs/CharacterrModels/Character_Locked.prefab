@@ -1808,11 +1808,12 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1410857311933126}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2203e7f7f342e0a4dbc8150d2749b23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootEffect: {fileID: 0}
   leg: {fileID: 1322508912319850}
   hand: {fileID: 1438530235246304}
   gun: {fileID: 1614907120386090}

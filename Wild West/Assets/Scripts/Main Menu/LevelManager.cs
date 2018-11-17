@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
+    public GameObject pref;
 
     public void OnSinglePlayerClick()
     {
@@ -29,4 +30,9 @@ public class LevelManager : MonoBehaviour {
 	{
 		SceneManager.LoadScene("shop");
 	}
+
+    public void Start()
+    {
+        Instantiate(pref);
+    }
 }

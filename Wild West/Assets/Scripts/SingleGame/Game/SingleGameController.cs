@@ -54,6 +54,7 @@ public class SingleGameController : MonoBehaviour {
         _infoText.text = "READY";
         yield return new WaitForSeconds(timeInSec);
         _startGameTime = Time.time;
+        _infoText.color = new Color(1f, 0.17f, 0.17f, 1);
         _infoText.text = "FIREEEE";
         _enemy.Shoot();
 
@@ -69,11 +70,10 @@ public class SingleGameController : MonoBehaviour {
         float resultTime = _player.ShootTime - _startGameTime;
         print(resultTime);
         print(_enemy.getShootTime());
-		_resultPanel.SetActive (true);
         if ((resultTime > 0.0f) && (resultTime < _enemy.getShootTime()))
         {
             _enemy.Dead();
-			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("WIN", resultTime);
+			_resultPanel.GetComponent<ResultPanelManager> ().SetResult (1, resultTime);
             int currentMoney = PlayerPrefs.GetInt("money", 0);
             currentMoney += _enemy.getHeadCost();
             PlayerPrefs.SetInt("money", currentMoney);
@@ -81,7 +81,10 @@ public class SingleGameController : MonoBehaviour {
         else
         {
             _player.Dead();
-			_resultPanel.GetComponent<ResultPanelManager> ().SetResult ("LOSE", resultTime);
+			_resultPanel.GetComponent<ResultPanelManager> ().SetResult (0, resultTime);
         }
+        yield return new WaitForSeconds(2);
+        _infoText.enabled = false;
+        _resultPanel.SetActive(true);
     }
 }

@@ -9,6 +9,7 @@ public class NetDiscoveryController : NetworkDiscovery {
 
 	public override void OnReceivedBroadcast (string fromAddress, string data)
 	{
+        print(fromAddress);
 		ipAddress = fromAddress;
 	}
 	

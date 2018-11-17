@@ -7,16 +7,27 @@ using UnityEngine.SceneManagement;
 public class ResultPanelManager : MonoBehaviour {
 	[SerializeField] Text _resultMatch;
 	[SerializeField] Text _resultTime;
+    [SerializeField] Color loseColorPanel;
+    [SerializeField] Color winColorPanel;
 
-	void Awake()
+    void Awake()
 	{
 		gameObject.SetActive (false);
 	}
 
-	public void SetResult(string result, float time)
+	public void SetResult(int result, float time)
 	{
-		_resultMatch.text = "You " + result + "!";
-		_resultTime.text = "Time: " + time.ToString();
+        if (result == 1)
+        {
+            _resultMatch.text = "YOU WIN";
+            GetComponent<Image>().color = winColorPanel;
+        }
+        else
+        {
+            _resultMatch.text = "YOU LOSE";
+            GetComponent<Image>().color = loseColorPanel;
+        }
+        _resultTime.text = "TIME: " + time.ToString();
 	}
 
 	public void OnMainMenuClick()

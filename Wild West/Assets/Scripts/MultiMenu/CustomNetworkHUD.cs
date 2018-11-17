@@ -37,10 +37,10 @@ public class CustomNetworkHUD : MonoBehaviour {
 
 	IEnumerator StartClient()
 	{
-		yield return new WaitForSeconds (0.5f);
-		string serverIp = netDiscovery.GetServerIpAddress ();
+        yield return new WaitForSeconds(0.5f);
+        string serverIp = netDiscovery.GetServerIpAddress ();
 		print (serverIp);
-		if (serverIp == null)
+        if (serverIp == null)
 			StartCoroutine (StartClient ());
 		else {
 			Regex ipTemplate = new Regex(@"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b");
