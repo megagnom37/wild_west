@@ -12,8 +12,12 @@ public class ResultPanelController : MonoBehaviour
 
     public void SetResult(string result, float time)
     {
-        _resultMatch.text = "You " + result + "!";
-        _resultTime.text = "Time: " + time.ToString();
+        _resultMatch.text = "YOU " + result;
+
+        if (time < 0f)
+            _resultTime.text = "FAILED";
+        else
+            _resultTime.text = "TIME: " + time.ToString("0.000");
     }
 
     public void OnMainMenuClick()

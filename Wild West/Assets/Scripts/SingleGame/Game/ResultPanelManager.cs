@@ -27,8 +27,12 @@ public class ResultPanelManager : MonoBehaviour {
             _resultMatch.text = "YOU LOSE";
             GetComponent<Image>().color = loseColorPanel;
         }
-        _resultTime.text = "TIME: " + time.ToString();
-	}
+
+        if (time < 0f)
+            _resultTime.text = "FAILED";
+        else
+            _resultTime.text = "TIME: " + time.ToString("0.000");
+    }
 
 	public void OnMainMenuClick()
 	{
