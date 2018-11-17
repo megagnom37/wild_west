@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/single_player_menu.unity
     guid: 65513eee5d8f4d349945d0b4b4d2d438
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/shop.unity
     guid: 25c8be2dc0ae7f843ace84c8ba914377
   - enabled: 0

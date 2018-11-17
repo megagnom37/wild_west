@@ -10,6 +10,7 @@ public class ChooseBotManager : MonoBehaviour {
     [SerializeField] private Text _textName;
     [SerializeField] private Text _textDescription;
     [SerializeField] private Text _textTime;
+    [SerializeField] private Text _textReward;
 
     private GameObject currentBotObject;
 
@@ -43,5 +44,6 @@ public class ChooseBotManager : MonoBehaviour {
         _textName.text = currentEnemyBot.name;
         _textDescription.text = currentEnemyBot.description;
         _textTime.text = "Avrg Shoot Time: " + currentEnemyBot.averageTime.ToString();
+        _textReward.text = "Reward: " + currentEnemyBot.headCost.ToString() + "$";
     }
 }
