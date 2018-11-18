@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/multi_player_game.unity
     guid: aa3556a5c96486040b31ce010cab6fab
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/multi_player_menu.unity
     guid: f633e22a8825b514bb511588892c8cff
   - enabled: 1
