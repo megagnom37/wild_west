@@ -27,7 +27,7 @@ public class Player : NetworkBehaviour
 
             _infoText = GameObject.Find("t_info").GetComponent<Text>();
             if (isServer)
-                _infoText.text = "WAIT OPPONENT";
+                _infoText.text = "WAIT...";
             else
                 _infoText.text = "READY";
 
@@ -58,7 +58,10 @@ public class Player : NetworkBehaviour
     public void ShowFire()
     {
         if (isPlayer)
-            _infoText.text = "FIRE";
+        {
+            _infoText.color = new Color(1f, 0.17f, 0.17f, 1);
+            _infoText.text = "FIREEEE";
+        }    
     }
 
 	public void ShowResults()
@@ -68,6 +71,7 @@ public class Player : NetworkBehaviour
         if (isResultReady && isPlayer)
         {
             resultPanel.GetComponent<ResultPanelController>().SetResult(resultMatch, resultTime);
+            _infoText.enabled = false;
             resultPanel.SetActive(true);
         }
 	}
@@ -77,10 +81,4 @@ public class Player : NetworkBehaviour
         resultTime = time;
 		GameController.SetPlayerTime (name, resultTime);
 	}
-
-    public void ShotAnime()
-    {
-        print("ShotAnime");
-    }
-
 }

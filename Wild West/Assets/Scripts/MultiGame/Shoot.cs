@@ -47,7 +47,7 @@ public class Shoot : NetworkBehaviour {
 		if (!isLocalPlayer)
 			return;
 
-		if (Input.GetKeyDown(KeyCode.Space) && !isShotWas) {
+		if (Input.GetMouseButtonDown(0) && !isShotWas) {
 			isShotWas = true;
 			Click ();
 		}

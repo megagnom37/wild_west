@@ -9,10 +9,16 @@ public class ResultPanelController : MonoBehaviour
 {
     [SerializeField] Text _resultMatch;
     [SerializeField] Text _resultTime;
+    [SerializeField] Color loseColorPanel;
+    [SerializeField] Color winColorPanel;
 
     public void SetResult(string result, float time)
     {
         _resultMatch.text = "YOU " + result;
+        if (result == "WIN")
+            GetComponent<Image>().color = winColorPanel;
+        else
+            GetComponent<Image>().color = loseColorPanel;
 
         if (time < 0f)
             _resultTime.text = "FAILED";

@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour {
     {
         NetworkManager.Shutdown();
         Destroy(GameObject.Find("NetworkManager"));
+        Destroy(GameObject.Find("NetworkDiscovery"));
         disconnectCount++;
         SceneManager.LoadScene("main_menu");
     }
