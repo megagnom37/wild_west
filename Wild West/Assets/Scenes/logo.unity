@@ -2303,6 +2303,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 474464561}
   m_Mesh: {fileID: 4300002, guid: 580963fe5e345874ba9c7a76e20179a0, type: 3}
+--- !u!1 &497030402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 1434777111904146, guid: 8be4a1574ec39d24587a690b14cdfe6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497030404}
+  - component: {fileID: 497030403}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &497030403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 114699402937621486, guid: 8be4a1574ec39d24587a690b14cdfe6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497030402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b0a5238d89a26b4e952c006c24a2c9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Shot
+    clip: {fileID: 8300000, guid: 0de7f8fb9905b4b42ae5eaedd9490635, type: 3}
+    volume: 0.907
+    pitch: 0.82
+    spatialBlend: 0.54
+    loop: 0
+    source: {fileID: 0}
+  - name: Background
+    clip: {fileID: 8300000, guid: 53d4f698222005a42851e89e880420eb, type: 3}
+    volume: 0.14
+    pitch: 1
+    spatialBlend: 0.184
+    loop: 1
+    source: {fileID: 0}
+--- !u!4 &497030404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 4152072839500022, guid: 8be4a1574ec39d24587a690b14cdfe6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 497030402}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 400.96164, y: 350.0688, z: 4.262556}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540008864
 GameObject:
   m_ObjectHideFlags: 0

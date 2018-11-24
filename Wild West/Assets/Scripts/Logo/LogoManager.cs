@@ -7,7 +7,9 @@ public class LogoManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         StartCoroutine(Loading());
-	}
+
+        AudioListener.volume = PlayerPrefs.GetInt("sound", 0);
+    }
 	
 	IEnumerator Loading()
     {

@@ -32,15 +32,13 @@ public class SettingsManager : MonoBehaviour {
         {
             soundIcon.sprite = soundIconOn;
             soundText.text = "SOUND ON";
-            AudioListener.volume = 100f;
+            AudioListener.volume = 1f;
         }
     }
 
     public void Start()
     {
         Instantiate(campfirePref);
-
-        AudioListener.volume = PlayerPrefs.GetInt("sound", 0);
         if ((int)AudioListener.volume != 0)
         {
             soundIcon.sprite = soundIconOn;
@@ -51,6 +49,5 @@ public class SettingsManager : MonoBehaviour {
             soundIcon.sprite = soundIconOff;
             soundText.text = "SOUND OFF";
         }
-            
     }
 }
