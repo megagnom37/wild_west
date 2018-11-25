@@ -27,9 +27,9 @@ public class Player : NetworkBehaviour
 
             _infoText = GameObject.Find("t_info").GetComponent<Text>();
             if (isServer)
-                _infoText.text = "WAIT...";
+                _infoText.text = LanguageManager.Translate("t_wait");
             else
-                _infoText.text = "READY";
+                _infoText.text = LanguageManager.Translate("t_ready");
 
             resultPanel = GameObject.Find("p_result");
             resultPanel.SetActive(false);
@@ -52,7 +52,7 @@ public class Player : NetworkBehaviour
     public void ShowReady()
     {
         if (isPlayer)
-            _infoText.text = "READY";
+            _infoText.text = LanguageManager.Translate("t_ready");
     }
 
     public void ShowFire()
@@ -60,7 +60,7 @@ public class Player : NetworkBehaviour
         if (isPlayer)
         {
             _infoText.color = new Color(1f, 0.17f, 0.17f, 1);
-            _infoText.text = "FIREEEE";
+            _infoText.text = LanguageManager.Translate("t_fire");
         }    
     }
 

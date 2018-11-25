@@ -41,9 +41,9 @@ public class ChooseBotManager : MonoBehaviour {
         currentBotObject = Instantiate(currentEnemyBot.botModel, _botSpawn.transform) as GameObject;
         //currentBotObject.transform.localPosition = new Vector3(0, 0, 0);
 
-        _textName.text = currentEnemyBot.name;
-        _textDescription.text = currentEnemyBot.description;
-        _textTime.text = "Avrg Shoot Time: " + currentEnemyBot.averageTime.ToString();
-        _textReward.text = "Reward: " + currentEnemyBot.headCost.ToString() + "$";
+        _textName.text = LanguageManager.Translate(currentEnemyBot.name + " name");
+        _textDescription.text = LanguageManager.Translate(currentEnemyBot.name + " descr");
+        _textTime.text = LanguageManager.Translate("t_avrg_time") + currentEnemyBot.averageTime.ToString();
+        _textReward.text = LanguageManager.Translate("t_reward") + currentEnemyBot.headCost.ToString() + "$";
     }
 }
