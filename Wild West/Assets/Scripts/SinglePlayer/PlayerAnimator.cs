@@ -25,6 +25,7 @@ public class PlayerAnimator : MonoBehaviour {
 
     public void PlayShootEffect()
     {
+        FindObjectOfType<AudioManager>().Play("Shot");
         shootEffect.GetComponent<Transform>().SetParent(null);
         shootEffect.Play();
     }

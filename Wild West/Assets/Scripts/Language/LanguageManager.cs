@@ -21,8 +21,8 @@ public class LanguageManager : MonoBehaviour {
         { "t_wait", new ArrayList { "WAIT...", "ОЖИДАЙТЕ..." } },
         { "t_time", new ArrayList { "TIME: ", "ВРЕМЯ: " } },
   
-        { "t_ready", new ArrayList { "READY", "ПРИГОТОВИТЬСЯ" } },
-        { "t_fire", new ArrayList { "FIREEEE", "ОГОООНЬ" } },
+        { "t_ready", new ArrayList { "READY ", "ПРИГОТОВИТЬСЯ " } },
+        { "t_fire", new ArrayList { "FIREEEE ", "ОГОООНЬ " } },
 
         { "t_menu", new ArrayList { "MENU", "МЕНЮ" } },
         { "t_disconnect", new ArrayList { "LEAVE", "ВЫЙТИ" } },
@@ -39,13 +39,13 @@ public class LanguageManager : MonoBehaviour {
         { "t_language", new ArrayList { "ENGLISH", "РУССКИЙ" } },
 
         { "t_buy_title", new ArrayList { "BUY CLOTHES", "КУПИТЬ ОДЕЖДУ" } },
-        { "t_cost", new ArrayList { "COST", "СТОИМОСТЬ" } },
-        { "t_balance", new ArrayList { "BALANCE", "БАЛАНС" } },
+        { "t_cost", new ArrayList { "COST:", "ЦЕНА:" } },
+        { "t_balance", new ArrayList { "BALANCE:", "БАЛАНС:" } },
         { "t_buy", new ArrayList { "BUY", "КУПИТЬ" } },
 
         { "t_restart", new ArrayList { "RESTART", "РЕСТАРТ" } },
 
-        { "t_enemy_title", new ArrayList { "CHOOSE ENEMY", "ВЫБЕРИТЕ ПРОТИВНИКА" } },
+        { "t_enemy_title", new ArrayList { "CHOOSE ENEMY", "ПРОТИВНИКИ" } },
         { "t_start", new ArrayList { "START", "СТАРТ" } },
 
         { "t_avrg_time", new ArrayList { "Avrg Shoot Time: ", "Среднее время выстрела: " } },

@@ -33,7 +33,7 @@ public class SettingsManager : MonoBehaviour {
         {
             soundIcon.sprite = soundIconOn;
             soundText.text = LanguageManager.Translate("t_sound_on");
-            AudioListener.volume = 100f;
+            AudioListener.volume = 1f;
         }
     }
 
@@ -56,7 +56,6 @@ public class SettingsManager : MonoBehaviour {
     {
         Instantiate(campfirePref);
 
-        AudioListener.volume = PlayerPrefs.GetInt("sound", 0);
         if ((int)AudioListener.volume != 0)
         {
             soundIcon.sprite = soundIconOn;
@@ -67,6 +66,7 @@ public class SettingsManager : MonoBehaviour {
             soundIcon.sprite = soundIconOff;
             soundText.text = LanguageManager.Translate("t_sound_off"); 
         }
+
         languageText.text = LanguageManager.Translate("t_language");
     }
 }
