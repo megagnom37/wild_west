@@ -19,19 +19,19 @@ public class ResultPanelManager : MonoBehaviour {
 	{
         if (result == 1)
         {
-            _resultMatch.text = "YOU WIN";
+            _resultMatch.text = LanguageManager.Translate("t_win");
             GetComponent<Image>().color = winColorPanel;
         }
         else
         {
-            _resultMatch.text = "YOU LOSE";
+            _resultMatch.text = LanguageManager.Translate("t_lose");
             GetComponent<Image>().color = loseColorPanel;
         }
 
         if (time < 0f)
-            _resultTime.text = "FAILED";
+            _resultTime.text = LanguageManager.Translate("t_failed");
         else
-            _resultTime.text = "TIME: " + time.ToString("0.000");
+            _resultTime.text = LanguageManager.Translate("t_time") + time.ToString("0.000");
     }
 
 	public void OnMainMenuClick()

@@ -51,11 +51,11 @@ public class SingleGameController : MonoBehaviour {
 
     IEnumerator StartGameAfterSeconds(float timeInSec)
     {
-        _infoText.text = "READY";
+        _infoText.text = LanguageManager.Translate("t_ready");
         yield return new WaitForSeconds(timeInSec);
         _startGameTime = Time.time;
         _infoText.color = new Color(1f, 0.17f, 0.17f, 1);
-        _infoText.text = "FIREEEE";
+        _infoText.text = LanguageManager.Translate("t_fire");
         _enemy.Shoot();
 
         StartCoroutine(ResultGameAfterSeconds(2f));
