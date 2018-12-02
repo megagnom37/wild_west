@@ -14,7 +14,7 @@ public class LanguageManager : MonoBehaviour {
 
         { "t_result_title", new ArrayList { "RESULT", "РЕЗУЛЬТАТ" } },
 
-        { "t_win", new ArrayList { "YOU WIN", "ВЫ ВЫЙГРАЛИ" } },
+        { "t_win", new ArrayList { "YOU WIN", "ВЫ ВЫИГРАЛИ" } },
         { "t_lose", new ArrayList { "YOU LOSE", "ВЫ ПРОИГРАЛИ" } },
         { "t_tie", new ArrayList { "YOU TIE", "НИЧЬЯ" } },
         { "t_failed", new ArrayList { "FAILED", "НЕУДАЧНО" } },
