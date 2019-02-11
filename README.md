@@ -1,2 +1,2 @@
 # Wild West
-A game for Android platforms about shooting in the Wild West
+A game about shooting in the Wild West
